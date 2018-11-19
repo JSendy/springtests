@@ -1,4 +1,8 @@
-import org.springframework.context.ApplicationContext;
+import beans.Client;
+import beans.Event;
+import beans.EventType;
+import loggers.EventLogger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -10,7 +14,7 @@ public class App {
     private EventLogger defaultLogger;
     Map<EventType, EventLogger> loggers;
     public static void main(String[] args){
-        ConfigurableApplicationContext ctx = new ClassPathXmlApplicationContext("spring.xml");
+        ConfigurableApplicationContext ctx = new ClassPathXmlApplicationContext("Spring.xml");
         App app = (App) ctx.getBean("app");
         Event event = ctx.getBean(Event.class);
         app.logEvent(EventType.INFO, event,"Some  event for 1");
